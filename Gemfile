@@ -6,11 +6,20 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'slim-rails'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+
+# Slim templating
+gem 'slim-rails'
+
+# Bulma CSS
+gem "bulma-rails", '~> 0.1.2'
+
+# Manage environment variables
 gem 'figaro'
+
+# authentication
 gem 'devise'
 gem 'omniauth-facebook'
 
@@ -19,7 +28,6 @@ gem 'omniauth-facebook'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 
 
 group :development, :test do
