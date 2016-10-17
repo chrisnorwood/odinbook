@@ -6,10 +6,14 @@ html
     title = content_for?(:title) ? yield(:title) : "odinbook"
     = csrf_meta_tags
 
+    = stylesheet_link_tag    'application', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    - flash.each do |message_type, message|
-      div class=["#{message_type}"]
-        = message
+    = render 'layouts/nav'
+    .container.alerts
+      - flash.each do |message_type, message|
+        - message_type = "danger" if message_type = "alert"
+        article class=["message is-#{message_type}"]
+          .message-body = message
     = yield
