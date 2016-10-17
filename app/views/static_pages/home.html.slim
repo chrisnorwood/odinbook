@@ -1,8 +1,58 @@
 = provide(:title, 'Welcome')
 section.section
   .container
-    .columns.is-vcentered
-      .column.is-4.is-offset-4
-        h1.title This a home page
+    .columns
+      .column.is-6.is-offset-3
         .box
-          p Some sort of homepagey stuff will go here!!
+          article.media
+            .figure.media-left
+              p.image.is-64x64
+                img src="http://placehold.it/128x128"
+            .media-content
+              p.control
+                textarea.textarea placeholder="What's on your mind?"
+              nav.level
+                .level-left
+                .level-right
+                  .level-item
+                    a.button.is-info href='#' Post
+        .box
+          article.media
+            figure.media-left
+              p.image.is-64x64
+                img src="http://placehold.it/128x128"
+            .media-content
+              p
+                strong> John Smith
+                small> @johnsmith
+                small 31m
+                br
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+              nav.level
+                .level-left
+                  .level-item
+                    span.icon.is-small: i.fa.fa-thumbs-o-up
+                  .level-item
+                    span.icon.is-small: i.fa.fa-comment-o
+            .media-right
+              button.delete
+        .box
+          article.media
+            figure.media-left
+              p.image.is-64x64
+                img src="http://placehold.it/128x128"
+            .media-content
+              p
+                strong> John Smith
+                small> @johnsmith
+                small 31m
+                br
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+              nav.level
+                .level-left
+                  .level-item
+                    span.icon.is-small: i.fa.fa-thumbs-o-up
+                  .level-item
+                    span.icon.is-small: i.fa.fa-comment-o
+            .media-right
+              button.delete
