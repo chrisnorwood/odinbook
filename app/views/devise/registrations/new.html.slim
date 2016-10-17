@@ -1,24 +1,28 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+= provide(:title, 'Register')
+section.section
+  .container
+    .columns.is-vcentered
+      .column.is-4.is-offset-4
+        h1.title Register
+        .box
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            = f.label :email, class: 'label'
+            p.control
+              = f.email_field :email, class: 'input', autofocus: true, placeholder: "cwncool@gmail.com"
+            = f.label :password, class: 'label'
+            - if @minimum_password_length
+              small: em
+                | (
+                = @minimum_password_length
+                |  characters minimum)
+            p.control
+              = f.password_field :password, class: 'input', autocomplete: "off", placeholder: "●●●●●●●"
+            = f.label :password_confirmation, class: 'label'
+            p.control
+              = f.password_field :password_confirmation, class: 'input', \
+                                                         autocomplete: "off", placeholder: "●●●●●●●"
+            p.control
+              = f.submit "Register", class: 'button is-info expanded-button'
+        p.has-text-centered
+          = render "devise/shared/links"

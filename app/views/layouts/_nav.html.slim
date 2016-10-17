@@ -8,6 +8,5 @@ nav.nav.has-shadow
       span
     .nav-right.nav-menu
       a.nav-item Link One
-      a.nav-item Link Two
-      span.nav-item
-        a.button.is-default This is a button
+      - if user_signed_in?
+        = link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-item'

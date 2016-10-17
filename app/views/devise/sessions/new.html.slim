@@ -1,18 +1,22 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+= provide(:title, 'Login')
+section.section
+  .container
+    .columns.is-vcentered
+      .column.is-4.is-offset-4
+        h1.title Log in
+        .box
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            = f.label :email, class: 'label'
+            p.control
+              = f.email_field :email, class: 'input', autofocus: true, placeholder: "cwncool@gmail.com"
+            = f.label :password, class: 'label'
+            p.control
+              = f.password_field :password, class: 'input', autocomplete: "off", placeholder: "●●●●●●●"
+            - if devise_mapping.rememberable?
+              p.control
+                = f.check_box :remember_me
+                =< f.label :remember_me
+            p.control
+              = f.submit "Log in", class: 'button is-info expanded-button'
+        p.has-text-centered
+          = render "devise/shared/links"
