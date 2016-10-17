@@ -3,6 +3,8 @@ class StaticPagesController < ApplicationController
 
   def home
     @user = current_user
-    @post = @user.posts.build
+
+    # TO BE: feed
+    @posts = current_user.posts
   end
 end

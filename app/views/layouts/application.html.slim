@@ -13,7 +13,7 @@ html
     = render 'layouts/nav'
     .container.alerts
       - flash.each do |message_type, message|
-        - message_type = "danger" if message_type = "alert"
+        - message_type = "danger" if message_type == "alert"
         article class=["message is-#{message_type}"]
           .message-body = message
     = yield

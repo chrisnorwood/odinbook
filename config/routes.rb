@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
     get 'register' => 'devise/registrations#new'
   end
+
+  resources :posts, only: [:create, :destroy]
 end

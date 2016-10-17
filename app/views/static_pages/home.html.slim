@@ -9,13 +9,35 @@ section.section
               p.image.is-64x64
                 img src="http://placehold.it/128x128"
             .media-content
-              p.control
-                textarea.textarea placeholder="What's on your mind?"
-              nav.level
-                .level-left
-                .level-right
-                  .level-item
-                    a.button.is-info href='#' Post
+              = form_for current_user.posts.build do |f|
+                p.control
+                  = f.text_area :body, class: 'textarea', placeholder: "What's on your mind?", autofocus: true
+                nav.level
+                  .level-left
+                  .level-right
+                    .level-item
+                      = f.submit "Post", class: 'button is-info'
+        - @posts.each do |post|
+          - if post.persisted?
+            .box
+              article.media
+                figure.media-left
+                  p.image.is-64x64
+                    img src="http://placehold.it/128x128"
+                .media-content
+                  p
+                    strong #{post.user.name}
+                    small<() (#{time_ago_in_words(post.created_at)} ago)
+                    br
+                    = post.body
+                  nav.level
+                    .level-left
+                      .level-item
+                        span.icon.is-small: i.fa.fa-thumbs-o-up
+                      .level-item
+                        span.icon.is-small: i.fa.fa-comment-o
+                .media-right
+                  button.delete
         .box
           article.media
             figure.media-left
