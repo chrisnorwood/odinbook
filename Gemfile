@@ -23,6 +23,9 @@ gem 'figaro'
 gem 'devise'
 gem 'omniauth-facebook'
 
+# fake data generation
+gem 'faker'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

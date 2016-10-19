@@ -1,9 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
-  user: one
+  body: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 6.hours.ago %>
+  user: chris
 
 two:
-  body: MyText
-  user: two
+  body: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 6.days.ago %>
+  user: chris
+
+three:
+  body: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 10.minutes.ago %>
+  user: dan
+
+most_recent:
+  body: "Writing a short test"
+  created_at: <%= Time.zone.now %>
+  user: dan
