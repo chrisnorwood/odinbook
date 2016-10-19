@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: " NOT This is five sentences..  No it aint.  Shit"
+  body: <%= Faker::Lorem.sentence(5) %>
   created_at: <%= 6.hours.ago %>
   user: chris
 
 two:
-  body: "This is five sentences. NOT. This is five sentences. This is five sentences."
+  body: <%= Faker::Lorem.sentence(5) %>
   created_at: <%= 6.days.ago %>
   user: chris
 
 three:
-  body: "This is five sentences. This is five sentences. This is five sentences. This is five sentences. This is five sentences."
+  body: <%= Faker::Lorem.sentence(5) %>
   created_at: <%= 10.minutes.ago %>
   user: chris
 
