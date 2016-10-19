@@ -9,3 +9,8 @@ dan:
   name: Dan Norwood
   email: dan@fakeaddress.com
   encrypted_password: <%= User.new.send(:password_digest, 'foobar') %>
+
+josh:
+  name: Joshua Reinig
+  email: jdawg@jdawg.com
+  encrypted_password: <%= User.new.send(:password_digest, 'foobar') %>
