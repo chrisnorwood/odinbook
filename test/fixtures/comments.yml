@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: "This is the first comment"
+  commentable: one
+  commentable_type: Post
+
+two:
+  body: "This is the second comment!  I like this thing!"
+  commentable: two
+  commentable_type: Post
