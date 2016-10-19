@@ -4,7 +4,8 @@ class CommentTest < ActiveSupport::TestCase
   
   def setup
     @post = posts(:one)
-    @comment = @post.comments.build(body: "Wow!! This is a comment!")
+    @commenter = users(:dan)
+    @comment = @post.comments.build(user: @commenter, body: "Wow!! This is a comment!")
   end
 
   test "should be valid" do
@@ -24,5 +25,14 @@ class CommentTest < ActiveSupport::TestCase
   test "commentable_id should not be nil" do
     @comment.commentable_id = nil
     assert_not @comment.valid?
+  end
+
+  test "user should not be nil" do
+    @comment.user = nil
+    assert_not @comment.valid?
+  end
+
+  test "comment creator is valid" do
+    assert_equal @comment.user, users(:dan)
   end
 end

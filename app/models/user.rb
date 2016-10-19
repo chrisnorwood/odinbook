@@ -11,5 +11,8 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
+  # Should split this into comment type, once pictures added
+  has_many :comments
+
   validates :name, presence: true, length: { maximum: 50 }
 end
