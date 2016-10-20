@@ -9,14 +9,16 @@ section.section
               p.image.is-64x64
                 img src="http://placehold.it/128x128"
             .media-content
-              = form_for current_user.posts.build do |f|
+              = form_for(current_user.posts.build, remote: true) do |f|
                 p.control
-                  = f.text_area :body, class: 'textarea', placeholder: "What's on your mind?", autofocus: true
+                  = f.text_area :body, class: 'textarea', placeholder: "What's on your mind?",
+                                                          autofocus: true, required: true
                 nav.level
                   .level-left
                   .level-right
                     .level-item
                       = f.submit "Post", class: 'button is-info'
-        - @posts.each do |post|
-          - if post.persisted?
-            = render post
+        #posts
+          - @posts.each do |post|
+            - if post.persisted?
+              = render post

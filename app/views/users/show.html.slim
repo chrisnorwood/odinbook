@@ -10,11 +10,12 @@ section.section
             .media-content
               h1.subtitle = link_to @user.name, @user
       .column.is-7
-        - if @user.posts.any?
-          - @user.posts.each do |post|
-            = render post
-        - else
-          .box
-            article.media
-              .media-content
-                p This user has no posts to display.
+        #posts
+          - if @user.posts.any?
+            - @user.posts.each do |post|
+              = render post
+          - else
+            .box
+              article.media
+                .media-content
+                  p This user has no posts to display.

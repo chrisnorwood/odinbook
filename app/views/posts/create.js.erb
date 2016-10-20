@@ -1,0 +1,4 @@
+var $posts = "#posts"
+var $newPost = "<%= escape_javascript render(partial: 'post', locals: { post: @post }) %>"
+
+$($newPost).hide().prependTo($posts).slideDown();

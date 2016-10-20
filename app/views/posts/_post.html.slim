@@ -1,5 +1,4 @@
-= provide(:title, post.user.name)
-.box
+.box class="post-#{post.id}"
   article.media
     .figure.media-left
       p.image.is-64x64
@@ -14,7 +13,7 @@
           br
           span.icon.is-small: i.fa.fa-thumbs-o-up
           small: a Like
-      .comments class="post-#{post.id}"
+      .comments class="comments-post-#{post.id}"
         - if post.comments.any?
           - post.comments.each do |comment|
             = render comment
@@ -25,12 +24,11 @@
         .media-content
           .content
             = form_for([post, post.comments.build], remote: true,
-                                                    html: { class: "comments-post-#{post.id}" }) do |f|             
+                                                    html: { class: "comment-form-post-#{post.id}" }) do |f|
               p.control
                 = f.text_field :body, class: 'input is-expanded', required: true
               p.control
                 = f.submit 'Comment', class: 'button is-info is-outlined is-pulled-right'
-
     - if post.user == current_user
       .media-right
-        button.delete
+        = button_to(post, method: :delete, remote: true, class: 'button delete') {}
