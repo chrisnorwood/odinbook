@@ -1,0 +1,27 @@
+section.section
+  .container
+    .columns
+      .column.is-3.is-offset-1
+        .box
+          article.media
+            .figure.media-left
+              p.image.is-128x128
+                img src="http://placehold.it/128x128"
+            .media-content
+              h1.subtitle = link_to @user.name, @user
+              - unless @user == current_user
+                = render 'requests/request_button'
+      .column.is-7
+        .box
+          - if @friends.any?
+            - @friends.each do |friend|
+              article.media
+                .figure.media-left
+                  p.image.is-64x64
+                    img src="http://placehold.it/128x128"
+                .media-content
+                  h1.title = link_to friend.name, friend
+          - else
+              article.media
+                .media-content
+                  p This user has no friends.

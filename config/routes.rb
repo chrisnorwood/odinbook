@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :requests, only: :create
+    resources :friends, only: :index, controller: 'friendships'
   end
 
   resources :requests, only: :update
