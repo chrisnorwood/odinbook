@@ -1,0 +1,43 @@
+= provide(:title, post.user.name)
+.box
+  article.media
+    .figure.media-left
+      p.image.is-64x64
+        img src="http://placehold.it/128x128"
+    .media-content
+      .content
+        p
+          strong = link_to post.user.name, post.user
+          small<() (#{time_ago_in_words(post.created_at)} ago)
+          br
+          = post.body
+          br
+          span.icon.is-small: i.fa.fa-thumbs-o-up
+          small: a Like
+      - if post.comments.any?
+        - post.comments.each do |comment|
+          article.media
+            .figure.media-left
+              p.image.is-32x32
+                img src="http://placehold.it/96x96"
+            .media-content
+              .content
+                p
+                  strong = link_to comment.user.name, comment.user
+                  small<() (#{time_ago_in_words(comment.created_at)} ago)
+                  br
+                  = comment.body
+      article.media
+        .figure.media-left
+          p.image.is-32x32
+            img src="http://placehold.it/96x96"
+        .media-content
+          .content
+            p.control
+              input.input.is-expanded type="text"
+            p.control
+              a.button.is-info.is-pulled-right Comment
+
+    - if post.user == current_user
+      .media-right
+        button.delete
