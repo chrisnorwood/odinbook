@@ -14,29 +14,22 @@
           br
           span.icon.is-small: i.fa.fa-thumbs-o-up
           small: a Like
-      - if post.comments.any?
-        - post.comments.each do |comment|
-          article.media
-            .figure.media-left
-              p.image.is-32x32
-                img src="http://placehold.it/96x96"
-            .media-content
-              .content
-                p
-                  strong = link_to comment.user.name, comment.user
-                  small<() (#{time_ago_in_words(comment.created_at)} ago)
-                  br
-                  = comment.body
+      .comments class="post-#{post.id}"
+        - if post.comments.any?
+          - post.comments.each do |comment|
+            = render comment
       article.media
         .figure.media-left
           p.image.is-32x32
             img src="http://placehold.it/96x96"
         .media-content
           .content
-            p.control
-              input.input.is-expanded type="text"
-            p.control
-              a.button.is-info.is-outlined.is-pulled-right Comment
+            = form_for([post, post.comments.build], remote: true,
+                                                    html: { class: "comments-post-#{post.id}" }) do |f|             
+              p.control
+                = f.text_field :body, class: 'input is-expanded', required: true
+              p.control
+                = f.submit 'Comment', class: 'button is-info is-outlined is-pulled-right'
 
     - if post.user == current_user
       .media-right

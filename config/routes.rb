@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     get 'register' => 'devise/registrations#new'
   end
 
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy] do
+    resources :comments, only: :create
+  end
+
+  resources :comments, only: :destroy
+
   resources :users, only: [:show]
 end

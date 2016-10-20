@@ -1,0 +1,2 @@
+$(".<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>").append("<%= escape_javascript render(partial: 'comment', locals: { comment: @comment }) %>");
+$(".comments-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>")[0].reset();

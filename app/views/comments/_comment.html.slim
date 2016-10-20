@@ -1,0 +1,13 @@
+article.media class="comment-#{comment.id}"
+  .figure.media-left
+    p.image.is-32x32
+      img src="http://placehold.it/96x96"
+  .media-content
+    .content
+      p
+        strong = link_to comment.user.name, comment.user
+        small<() (#{time_ago_in_words(comment.created_at)} ago)
+        - if comment.user == current_user
+          small: em< = link_to "Delete", comment, method: :delete, remote: true
+        br
+        = comment.body
