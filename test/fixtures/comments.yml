@@ -4,8 +4,10 @@ one:
   body: "This is the first comment"
   commentable: one
   commentable_type: Post
+  user: chris
 
 two:
   body: "This is the second comment!  I like this thing!"
-  commentable: two
+  commentable: one
   commentable_type: Post
+  user: dan
