@@ -12,15 +12,17 @@ section.section
               - unless @user == current_user
                 = render 'requests/request_button'
       .column.is-7
+        h1.title #{@user.name}'s friends:
+        .subtitle: em = link_to "(Return to posts)", @user
         .box
           - if @friends.any?
             - @friends.each do |friend|
               article.media
                 .figure.media-left
-                  p.image.is-64x64
-                    img src="http://placehold.it/128x128"
+                  p.image.is-32x32
+                    img src="http://placehold.it/64x64"
                 .media-content
-                  h1.title = link_to friend.name, friend
+                  h1.subtitle = link_to friend.name, friend
           - else
               article.media
                 .media-content
