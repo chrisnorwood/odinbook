@@ -4,15 +4,19 @@
       i.fa.fa-check-circle
     span Request Sent
 - elsif current_user.friends_requesting.include?(@user)
-  button.button.is-success.is-small
+  - request = current_user.received_requests.find_by(user_id: @user.id)
+  = button_to(request_path(request), method: :put, class: 'button is-success is-small') do |b|
     span.icon.is-small
       i.fa.fa-user-plus
     span Accept Request
 - elsif current_user.friends.include?(@user)
+  - friendship = current_user.friendships.find_by(user_id: current_user.id, friend_id: @user.id)
   button.button.is-success.is-small.is-active
     span.icon.is-small
       i.fa.fa-check-circle
     span Friends
+  br
+  small: em = link_to "(Unfriend)", friendship_path(friendship), method: :delete
 - else
   = button_to(user_requests_path(@user), class: 'button is-success is-small') do |b|
     span.icon.is-small

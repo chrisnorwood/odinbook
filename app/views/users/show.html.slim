@@ -11,6 +11,18 @@ section.section
               h1.subtitle = link_to @user.name, @user
               - unless @user == current_user
                 = render 'requests/request_button'
+          br
+          h3.subtitle Friends:
+          - if @user.friends.any?
+            - @user.friends.take(6).each do |friend|
+              article.media
+                .figure.media-left
+                  p.image.is-32x32
+                    img src="http://placehold.it/64x64"
+                .media-content
+                  = link_to friend.name, friend
+              - if @user.friends.count > 6
+                em: a View all friends...
       .column.is-7
         #posts
           - if @user.posts.any?

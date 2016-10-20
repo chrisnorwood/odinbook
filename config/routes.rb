@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   end
 
   resources :requests, only: :update
+
+  resources :friendships, only: :destroy
 end
