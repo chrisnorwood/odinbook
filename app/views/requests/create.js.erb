@@ -1,0 +1,4 @@
+var $buttonsContainer = "#request-buttons"
+var $buttons = "<%= escape_javascript render(partial: 'request_button') %>"
+
+$($buttonsContainer).hide().html($buttons).fadeIn();

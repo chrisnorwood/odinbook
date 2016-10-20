@@ -10,7 +10,8 @@ section.section
             .media-content
               h1.subtitle = link_to @user.name, @user
               - unless @user == current_user
-                = render 'requests/request_button'
+                #request-buttons
+                  = render 'requests/request_button'
       .column.is-7
         h1.title #{@user.name}'s friends:
         .subtitle: em = link_to "(Return to posts)", @user
