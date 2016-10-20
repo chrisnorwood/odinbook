@@ -26,14 +26,24 @@ end
 # Posts
 me = User.first
 10.times do |n|
-  body = Faker::Lorem.sentence(4)
+  body = Faker::Lorem.sentence(6)
   me.posts.create!(body: body)
 end
 
 dan = User.second
+10.times do |n|
+  body = Faker::Lorem.sentence(6)
+  me.posts.create!(body: body)
+end
+
 5.times do |n|
   body = Faker::Lorem.sentence(2)
   me.posts.first.comments.create!(body: body, user: dan)
+end
+
+5.times do |n|
+  body = Faker::Lorem.sentence(2)
+  dan.posts.first.comments.create!(body: body, user: me)
 end
 
 # users = User.order(:created_at).take(6)
