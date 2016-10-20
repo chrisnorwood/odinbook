@@ -14,3 +14,8 @@ josh:
   name: Joshua Reinig
   email: jdawg@jdawg.com
   encrypted_password: <%= User.new.send(:password_digest, 'foobar') %>
+
+jim:
+  name: Jim Dover
+  email: jimdawg@jeezy.net
+  encrypted_password: <%= User.new.send(:password_digest, 'foobar') %>
