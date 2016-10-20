@@ -33,7 +33,7 @@ end
 dan = User.second
 10.times do |n|
   body = Faker::Lorem.sentence(6)
-  me.posts.create!(body: body)
+  dan.posts.create!(body: body)
 end
 
 5.times do |n|
