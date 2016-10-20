@@ -8,6 +8,11 @@ class Request < ApplicationRecord
   validate  :not_friends
   validate  :not_pending
 
+  def accept
+    user.friends << friend
+    destroy
+  end
+
   private
 
     def not_self

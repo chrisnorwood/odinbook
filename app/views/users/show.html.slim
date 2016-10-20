@@ -9,6 +9,8 @@ section.section
                 img src="http://placehold.it/128x128"
             .media-content
               h1.subtitle = link_to @user.name, @user
+              - unless @user == current_user
+                = render 'requests/request_button'
       .column.is-7
         #posts
           - if @user.posts.any?

@@ -2,7 +2,26 @@
 section.section
   .container
     .columns
-      .column.is-6.is-offset-3
+      .column.is-3.is-offset-1
+        .box
+          h1.subtitle Friend Requests:
+          - if current_user.received_requests.any?
+            - current_user.received_requests.each do |request|
+              article.media
+                .figure.media-left
+                  p.image.is-32x32
+                    img src="http://placehold.it/64x64"
+                .media-content
+                  = link_to request.user.name, request.user
+                .media-right
+                  = button_to(request_path(request), method: :put, class: 'button is-success is-small') do |b|
+                    span.icon.is-small
+                      i.fa.fa-user-plus
+                    span Accept
+          - else
+            span: em You have no requests.
+      .column.is-7
+        h1.title News Feed
         .box
           article.media
             .figure.media-left
