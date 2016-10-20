@@ -1,2 +1,6 @@
-$(".<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>").append("<%= escape_javascript render(partial: 'comment', locals: { comment: @comment }) %>");
-$(".comments-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>")[0].reset();
+var $post        = ".<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>"
+var $newComment  = "<%= escape_javascript render(partial: 'comment', locals: { comment: @comment }) %>"
+var $commentForm = ".comments-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>"
+
+$($newComment).hide().appendTo($post).slideDown('slow');
+$($commentForm)[0].reset();

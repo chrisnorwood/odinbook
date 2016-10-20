@@ -1,1 +1,2 @@
-$(".comment-<%= @comment.id %>").remove();
+var $comment = ".comment-<%= @comment.id %>"
+$($comment).slideUp('normal', function() { $(this).remove() });
