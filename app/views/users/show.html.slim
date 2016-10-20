@@ -25,6 +25,8 @@ section.section
               /- if @user.friends.count > 6
               em.is-pulled-right: a = link_to "View all friends...", user_friends_path(@user)
               br
+          - else
+            p: em This user has no friends.
       .column.is-7
         #posts
           - if @user.posts.any?
