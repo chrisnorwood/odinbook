@@ -4,7 +4,6 @@ class StaticPagesController < ApplicationController
   def home
     @user = current_user
 
-    # TO BE: feed
-    @posts = current_user.posts
+    @posts = current_user.feed
   end
 end

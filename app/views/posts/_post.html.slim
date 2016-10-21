@@ -11,13 +11,17 @@
           br
           = post.body
           br
-          span.icon.is-small: i.fa.fa-thumbs-o-up
-          small: a Like
+          a.button.is-small.is-link
+            span.icon.is-small: i.fa.fa-thumbs-o-up
+            span Like
+          a.button.is-small.is-link.reply
+            span.icon.is-small: i.fa.fa-mail-reply
+            span Reply
       .comments class="comments-post-#{post.id}"
         - if post.comments.any?
           - post.comments.each do |comment|
             = render comment
-      article.media
+      article.media.comment-form
         .figure.media-left
           p.image.is-32x32
             img src="http://placehold.it/96x96"

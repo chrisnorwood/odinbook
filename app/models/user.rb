@@ -25,4 +25,9 @@ class User < ApplicationRecord
   has_many :likes
 
   validates :name, presence: true, length: { maximum: 50 }
+
+  def feed
+    ids = self.friends.pluck(:id) << self.id
+    Post.where(user_id: ids)
+  end
 end
