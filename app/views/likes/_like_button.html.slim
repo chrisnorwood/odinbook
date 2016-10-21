@@ -1,0 +1,10 @@
+- like = post.likes.find_by(user: current_user)
+- unless like.nil?
+  = button_to(like_path(like), method: :delete, remote: true, class: 'button is-small is-info is-pulled-left') do |b|
+    span.icon.is-small: i.fa.fa-thumbs-o-up
+    span Liked
+- else
+  = button_to(post_likes_path(post), remote: true, class: 'button is-small is-link is-pulled-left') do |b|
+    span.icon.is-small: i.fa.fa-thumbs-o-up
+    span Like
+small () | #{pluralize post.likes.count, 'like'}

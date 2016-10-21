@@ -1,0 +1,4 @@
+var $post = ".post-<%= @post.id %>";
+var $likeButton  = "<%= escape_javascript render(partial: 'likes/like_button', locals: { post: @post }) %>";
+
+$($post).find('.like-button').hide().html($likeButton).fadeIn();
