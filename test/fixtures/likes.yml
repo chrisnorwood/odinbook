@@ -1,1 +1,4 @@
-# empty
+one:
+  user: chris
+  likeable_id: 1
+  likeable_type: Post

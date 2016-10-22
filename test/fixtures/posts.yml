@@ -15,6 +15,11 @@ three:
   created_at: <%= 10.minutes.ago %>
   user: chris
 
+post-to-like:
+  body: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 10.minutes.ago %>
+  user: chris
+
 most_recent:
   body: "Writing a short test"
   created_at: <%= Time.zone.now %>
