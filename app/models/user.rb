@@ -28,6 +28,7 @@ class User < ApplicationRecord
 
   validates_integrity_of :picture
   validates_processing_of :picture
+  validate :picture_size
   validates :name, presence: true, length: { maximum: 50 }
 
   def feed
@@ -37,7 +38,7 @@ class User < ApplicationRecord
 
   private
 
-    def picture_size_validation
-      errors[:picture] << "should be less than 500KB" if avatar.size > 0.5.megabytes
+    def picture_size
+      errors[:picture] << "should be less than 500KB" if picture.size > 0.5.megabytes
     end
 end
