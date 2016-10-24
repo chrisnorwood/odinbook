@@ -11,7 +11,7 @@ section.section
               article.media
                 .figure.media-left
                   p.image.is-32x32
-                    img src="http://placehold.it/64x64"
+                    = image_tag request.user.picture.url(:small)
                 .media-content
                   = link_to request.user.name, request.user
                 .media-right
@@ -27,7 +27,7 @@ section.section
           article.media
             .figure.media-left
               p.image.is-64x64
-                img src="http://placehold.it/128x128"
+                = image_tag(current_user.picture.url(:medium))
             .media-content
               = form_for(current_user.posts.build, remote: true) do |f|
                 p.control

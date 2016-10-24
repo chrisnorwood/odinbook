@@ -7,4 +7,4 @@
   = button_to(post_likes_path(post), remote: true, class: 'button is-small is-link is-pulled-left') do |b|
     span.icon.is-small: i.fa.fa-thumbs-o-up
     span Like
-small &nbsp;(#{pluralize post.likes.count, 'like'})
+small &nbsp;(#{pluralize post.likes.count, 'like'})&nbsp;

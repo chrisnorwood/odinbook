@@ -2,16 +2,7 @@ section.section
   .container
     .columns
       .column.is-3.is-offset-1
-        .box
-          article.media
-            .figure.media-left
-              p.image.is-128x128
-                img src="http://placehold.it/128x128"
-            .media-content
-              h1.subtitle = link_to @user.name, @user
-              - unless @user == current_user
-                #request-buttons
-                  = render 'requests/request_button'
+        = render 'users/stats'
       .column.is-7
         h1.title #{@user.name}'s friends:
         .subtitle: em = link_to "(Return to posts)", @user
@@ -21,7 +12,7 @@ section.section
               article.media
                 .figure.media-left
                   p.image.is-32x32
-                    img src="http://placehold.it/64x64"
+                    = image_tag(friend.picture.url(:small))
                 .media-content
                   h1.subtitle = link_to friend.name, friend
           - else

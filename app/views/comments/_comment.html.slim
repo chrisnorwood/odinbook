@@ -1,7 +1,7 @@
 article.media class="comment-#{comment.id}"
   .figure.media-left
     p.image.is-32x32
-      img src="http://placehold.it/96x96"
+      = image_tag(comment.user.picture.url(:small))
   .media-content
     .content
       p
