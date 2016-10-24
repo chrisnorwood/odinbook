@@ -24,10 +24,20 @@ class User < ApplicationRecord
   # split into like type??
   has_many :likes
 
+  mount_uploader :picture, PictureUploader
+
+  validates_integrity_of :picture
+  validates_processing_of :picture
   validates :name, presence: true, length: { maximum: 50 }
 
   def feed
     ids = self.friends.pluck(:id) << self.id
     Post.where(user_id: ids)
   end
+
+  private
+
+    def picture_size_validation
+      errors[:picture] << "should be less than 500KB" if avatar.size > 0.5.megabytes
+    end
 end
