@@ -18,5 +18,7 @@ section.section
                 =< f.label :remember_me
             p.control
               = f.submit "Log in", class: 'button is-info expanded-button'
+          hr
+          = button_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: 'button is-primary expanded-button'
         p.has-text-centered
           = render "devise/shared/links"

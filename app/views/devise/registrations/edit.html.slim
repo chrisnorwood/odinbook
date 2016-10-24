@@ -17,28 +17,29 @@ section.section
               div
                 | Currently waiting confirmation for: 
                 = resource.unconfirmed_email
-            = f.label :password, class: 'label'
-            small() (leave blank if you don't want to change it)
-            p.control
-              = f.password_field :password, autocomplete: "off", class: 'input'
-              - if @minimum_password_length
-                br
-                em
-                  = @minimum_password_length
-                  |  characters minimum
-            = f.label :password_confirmation, class: 'label'
-            p.control
-              = f.password_field :password_confirmation, autocomplete: "off", class: 'input'
-            - if current_user.picture.url.present?
-              = image_tag(current_user.picture.url(:large))
+            - if f.object.provider.nil?
+              = f.label :password, class: 'label'
+              small() (leave blank if you don't want to change it)
+              p.control
+                = f.password_field :password, autocomplete: "off", class: 'input'
+                - if @minimum_password_length
+                  br
+                  em
+                    = @minimum_password_length
+                    |  characters minimum
+              = f.label :password_confirmation, class: 'label'
+              p.control
+                = f.password_field :password_confirmation, autocomplete: "off", class: 'input'
+              = f.label :current_password, class: 'label'
+              small() (we need your current password to confirm your changes)
+              p.control
+                = f.password_field :current_password, autocomplete: "off", class: 'input'
+            - if f.object.picture.url.present?
+              = image_tag(f.object.picture.url(:large))
             = f.label :picture, "Profile picture", class: 'label'
             p.control
               = f.file_field :picture 
               = f.hidden_field :picture_cache
-            = f.label :current_password, class: 'label'
-            small() (we need your current password to confirm your changes)
-            p.control
-              = f.password_field :current_password, autocomplete: "off", class: 'input'
             p.control
               = f.submit "Update profile", class: 'button is-info expanded-button'
           p

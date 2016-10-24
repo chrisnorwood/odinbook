@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_for :user, controllers: {  
     # confirmations: 'users/confirmations',
     passwords: 'devise/passwords',
-    registrations: 'devise/registrations',
+    registrations: 'users/registrations',
     sessions: 'devise/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
     # unlocks: 'users/unlocks',
   }, skip: [:sessions]
 
