@@ -1,3 +1,4 @@
+require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 
 CarrierWave.configure do |config|
@@ -10,4 +11,5 @@ CarrierWave.configure do |config|
   }
   config.fog_directory = ENV['aws_s3_bucket']
   config.fog_public = false
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
 end
