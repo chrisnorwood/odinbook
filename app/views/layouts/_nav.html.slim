@@ -8,6 +8,7 @@ nav.nav.has-shadow
       span
     .nav-right.nav-menu
       - if user_signed_in?
-        = link_to "Welcome, #{current_user.name}", current_user, class: 'nav-item'
+        .nav-item: em Welcome, #{current_user.name}
+        = link_to "View your profile", current_user, class: 'nav-item'
         .nav-item
           = link_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-light'

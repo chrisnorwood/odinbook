@@ -3,6 +3,7 @@ section.section
   .container
     .columns
       .column.is-3.is-offset-1
+        = render 'users/stats'
         .box
           h1.subtitle Friend Requests:
           - if current_user.received_requests.any?
