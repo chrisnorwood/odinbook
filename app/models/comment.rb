@@ -5,4 +5,5 @@ class Comment < ApplicationRecord
   default_scope -> { order(created_at: :asc) }
 
   validates :body, :commentable, { presence: true }
+  validates :user_id, presence: true
 end
