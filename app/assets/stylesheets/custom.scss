@@ -9,7 +9,7 @@ body {
 
 
 // Navigation
-.nav {
+#top-bar {
   background-color: #3273dc;
   .nav-left {
     font-size: 2em;
@@ -34,4 +34,13 @@ section.section {
 
 .expanded-button {
   width: 100%;
+}
+
+// Tabs
+.tab-content {
+  display: none;
+}
+
+.tab-content.current {
+  display: inherit;
 }
