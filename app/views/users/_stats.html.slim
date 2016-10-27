@@ -2,26 +2,26 @@
   article.media
     .figure.media-left
       p.image.is-128x128
-        = image_tag @user.picture.url(:large)
+        = image_tag user.picture.url(:large)
     .media-content
-      h1.subtitle = link_to @user.name, @user
-      - unless @user == current_user
-        #request-buttons
-          = render 'requests/request_button'
+      h1.subtitle = link_to user.name, user
+      - unless user == current_user
+        div class="request-buttons-#{user.id}"
+          = render partial: 'requests/request_button', locals: { user: user }
       - else
         span: em = link_to "Edit picture or info.", edit_user_registration_path
   br
   h3.subtitle Friends:
-  - if @user.friends.any?
-    - @user.friends.take(6).each do |friend|
+  - if user.friends.any?
+    - user.friends.take(6).each do |friend|
       article.media
         .figure.media-left
           p.image.is-32x32
             = image_tag friend.picture.url(:small)
         .media-content
           = link_to friend.name, friend
-      /- if @user.friends.count > 6
-      em.is-pulled-right: a = link_to "View all friends...", user_friends_path(@user)
+    - if user.friends.count > 6
+      em.is-pulled-right: a = link_to "View all friends...", user_friends_path(user)
       br
   - else
     p: em This user has no friends.

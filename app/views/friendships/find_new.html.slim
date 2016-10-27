@@ -1,21 +1,23 @@
+= provide(:title, 'Find new friends')
 section.section
   .container
     .columns
       .column.is-3.is-offset-1
         = render partial: 'users/stats', locals: { user: @user }
       .column.is-7
-        h1.title #{@user.name}'s friends:
-        .subtitle: em = link_to "(Return to posts)", @user
+        h1.title Find new friends
         .box
-          - if @friends.any?
-            - @friends.each do |friend|
+          - if @new_friends.any?
+            - @new_friends.each do |friend|
               article.media
                 .figure.media-left
                   p.image.is-32x32
                     = image_tag(friend.picture.url(:small))
                 .media-content
                   h1.subtitle = link_to friend.name, friend
+                  div class="request-buttons-#{friend.id}"
+                    = render partial: 'requests/request_button', locals: { user: friend }
           - else
               article.media
                 .media-content
-                  p This user has no friends.
+                  p You're friends with everyone!

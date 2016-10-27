@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   resources :requests, only: :update
 
   resources :friendships, only: :destroy
+  get '/find_friends', to: 'friendships#find_new'
 end

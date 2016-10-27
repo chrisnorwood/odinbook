@@ -1,4 +1,4 @@
-var $buttonsContainer = "#request-buttons"
-var $buttons = "<%= escape_javascript render(partial: 'request_button') %>"
+var $buttonsContainer = ".request-buttons-<%= @user.id %>"
+var $buttons = "<%= escape_javascript render(partial: 'request_button', locals: { user: @user }) %>"
 
 $($buttonsContainer).hide().html($buttons).fadeIn();

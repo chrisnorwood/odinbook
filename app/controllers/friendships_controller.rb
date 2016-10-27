@@ -12,6 +12,13 @@ class FriendshipsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def find_new
+    @user           = current_user
+    current_friends = @user.friends
+    @new_friends    = User.all.reject { |friend| current_friends.include?(friend) || friend == @user }
+    # debugger
+  end
+
   private
 
     def correct_user

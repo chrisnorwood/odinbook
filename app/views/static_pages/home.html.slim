@@ -3,7 +3,7 @@ section.section
   .container
     .columns
       .column.is-3.is-offset-1
-        = render 'users/stats'
+        = render partial: 'users/stats', locals: { user: @user }
         .box
           h1.subtitle Friend Requests:
           - if current_user.received_requests.any?
@@ -21,6 +21,7 @@ section.section
                     span Accept
           - else
             span: em You have no requests.
+          p = link_to "Find new friends", find_friends_path
       .column.is-7
         h1.title News Feed
         .box

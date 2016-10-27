@@ -14,6 +14,7 @@ html
     .container.alerts
       - flash.each do |message_type, message|
         - message_type = "danger" if message_type == "alert"
+        - message_type = "info"   if message_type == "notice"
         article class=["message is-#{message_type}"]
           .message-body = message
     = yield
