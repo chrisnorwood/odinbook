@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :posts, dependent: :destroy
+  has_many :posts,  dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   has_many :requests, dependent: :destroy
   has_many :sent_requests,     class_name: 'Request', foreign_key: 'user_id', 
@@ -34,7 +35,11 @@ class User < ApplicationRecord
 
   def feed
     ids = self.friends.pluck(:id) << self.id
-    Post.where(user_id: ids)
+    posts    = Post.where(user_id: ids)
+    photos   = Photo.where(user_id: ids)
+    combined = ( posts + photos ).sort_by(&:created_at).reverse
+
+    return combined
   end
 
   def self.from_omniauth(auth)

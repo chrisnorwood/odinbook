@@ -4,6 +4,6 @@ class StaticPagesController < ApplicationController
   def home
     @user = current_user
 
-    @posts = current_user.feed
+    @feed_items = current_user.feed
   end
 end

@@ -1,0 +1,38 @@
+.box class="photo-#{photo.id}"
+  article.media
+    .figure.media-left
+      p.image.is-64x64
+        = image_tag photo.user.picture.url(:medium)
+    .media-content
+      .content
+        strong = link_to photo.user.name, photo.user
+        small<() (#{time_ago_in_words(photo.created_at)} ago)
+        figure.image
+          = image_tag photo.file.url
+        br
+        = photo.description
+        br
+        span.like-button
+          = render partial: 'likes/like_button', locals: { object: photo }
+        a.button.is-small.is-link.reply
+          span.icon.is-small: i.fa.fa-mail-reply
+          span Reply
+      .comments class="comments-photo-#{photo.id}"
+        - if photo.comments.any?
+          - photo.comments.each do |comment|
+            = render comment
+      article.media.comment-form
+        .figure.media-left
+          p.image.is-32x32
+            = image_tag(current_user.picture.url(:small))
+        .media-content
+          .content
+            = form_for([photo, photo.comments.build], remote: true,
+                                                    html: { class: "comment-form-photo-#{photo.id}" }) do |f|
+              p.control
+                = f.text_field :body, class: 'input is-expanded', required: true
+              p.control
+                = f.submit 'Comment', class: 'button is-info is-outlined is-pulled-right'
+    - if photo.user == current_user
+      .media-right
+        = button_to(photo, method: :delete, remote: true, class: 'button delete') {}

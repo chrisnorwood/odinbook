@@ -34,7 +34,7 @@ section.section
               li data-tab="tab-2"
                 a
                   span.icon.is-small: i.fa.fa-picture-o
-                  span Post Photos
+                  span Post Photo
           #tab-1.tab-content.current
             article.media
               .figure.media-left
@@ -56,14 +56,20 @@ section.section
                 p.image.is-64x64
                   = image_tag(current_user.picture.url(:medium))
               .media-content
-                p 
-                  | File Upload
+                = form_for(current_user.photos.build, remote: true, html: { multipart: true }) do |f|
+                  = hidden_field_tag :authenticity_token, form_authenticity_token
+                  = f.label :file
+                  p.control
+                    = f.file_field :file, required: true
+                  = f.label :description
+                  p.control
+                    = f.text_field :description, class: 'input', required: true
                   nav.level
                     .level-left
                     .level-right
                       .level-item
-                        .button.button
+                        = f.submit "Post", class: 'button is-info'
         #posts
-          - @posts.each do |post|
-            - if post.persisted?
-              = render post
+          - @feed_items.each do |feed_item|
+            - if feed_item.persisted?
+              = render feed_item
