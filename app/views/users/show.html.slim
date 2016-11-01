@@ -5,11 +5,11 @@ section.section
         = render partial: 'stats', locals: { user: @user }
       .column.is-7
         #posts
-          - if @user.posts.any?
-            - @user.posts.each do |post|
-              = render post
+          - if @user.personal_feed.any?
+            - @user.personal_feed.each do |feed_item|
+              = render feed_item
           - else
             .box
               article.media
                 .media-content
-                  p This user has no posts to display.
+                  p This user has no contributions to display.

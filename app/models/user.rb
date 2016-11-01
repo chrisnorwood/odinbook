@@ -42,6 +42,14 @@ class User < ApplicationRecord
     return combined
   end
 
+  def personal_feed
+    posts  = self.posts
+    photos = self.photos
+    combined = ( posts + photos ).sort_by(&:created_at).reverse
+
+    return combined
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
