@@ -14,6 +14,6 @@ class Photo < ApplicationRecord
   private
 
     def file_size
-      errors[:file] << "should be less than 1.5MB" if file.size > 1.5.megabytes
+      errors[:file] << "should be less than 3.0MB" if file.size > 3.0.megabytes
     end
 end
