@@ -1,6 +1,6 @@
-var $post        = ".comments-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>"
+var $commentable = ".comments-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>"
 var $newComment  = "<%= escape_javascript render(partial: 'comment', locals: { comment: @comment }) %>"
 var $commentForm = ".comment-form-<%= @comment.commentable_type.downcase %>-<%= @comment.commentable.id %>"
 
-$($newComment).hide().appendTo($post).slideDown('normal');
+$($newComment).hide().appendTo($commentable).slideDown('normal');
 $($commentForm)[0].reset();

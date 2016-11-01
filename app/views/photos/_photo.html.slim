@@ -7,11 +7,12 @@
       .content
         strong = link_to photo.user.name, photo.user
         small<() (#{time_ago_in_words(photo.created_at)} ago)
-        figure.image
-          = image_tag photo.file.url
-        br
-        = photo.description
-        br
+        .card.is-fullwidth.photo-card
+          .card-image
+            figure.image
+              = image_tag photo.file.url
+          .card-content
+            .content = photo.description
         span.like-button
           = render partial: 'likes/like_button', locals: { object: photo }
         a.button.is-small.is-link.reply

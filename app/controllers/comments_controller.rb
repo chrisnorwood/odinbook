@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
+    @commentable = get_commentable
+    @comment = @commentable.comments.create(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       respond_to do |format|
@@ -34,5 +34,14 @@ class CommentsController < ApplicationController
     def correct_user
       @comment = current_user.comments.find_by(id: params[:id])
       redirect_to root_url if @comment.nil?
+    end
+
+    def get_commentable
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
+      end
+      nil
     end
 end
