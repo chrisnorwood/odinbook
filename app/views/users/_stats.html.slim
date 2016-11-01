@@ -2,14 +2,14 @@
   article.media
     .figure.media-left
       p.image.is-128x128
-        = image_tag user.picture.url(:large)
+        = image_tag user.profile_photo_path
     .media-content
       h1.subtitle = link_to user.name, user
       - unless user == current_user
         div class="request-buttons-#{user.id}"
           = render partial: 'requests/request_button', locals: { user: user }
       - else
-        span: em = link_to "Edit picture or info.", edit_user_registration_path
+        span: em = link_to "Edit info", edit_user_registration_path
   br
   h3.subtitle Friends:
   - if user.friends.any?
@@ -17,7 +17,7 @@
       article.media
         .figure.media-left
           p.image.is-32x32
-            = image_tag friend.picture.url(:small)
+            = image_tag friend.profile_photo_path
         .media-content
           = link_to friend.name, friend
     - if user.friends.count > 6

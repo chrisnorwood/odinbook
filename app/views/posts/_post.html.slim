@@ -2,7 +2,7 @@
   article.media
     .figure.media-left
       p.image.is-64x64
-        = image_tag post.user.picture.url(:medium)
+        = image_tag post.user.profile_photo_path
     .media-content
       .content
         strong = link_to post.user.name, post.user
@@ -22,7 +22,7 @@
       article.media.comment-form
         .figure.media-left
           p.image.is-32x32
-            = image_tag(current_user.picture.url(:small))
+            = image_tag(current_user.profile_photo_path)
         .media-content
           .content
             = form_for([post, post.comments.build], remote: true,

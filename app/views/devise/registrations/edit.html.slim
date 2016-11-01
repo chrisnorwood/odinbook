@@ -34,12 +34,6 @@ section.section
               small() (we need your current password to confirm your changes)
               p.control
                 = f.password_field :current_password, autocomplete: "off", class: 'input'
-            - if f.object.picture.url.present?
-              = image_tag(f.object.picture.url(:large))
-            = f.label :picture, "Profile picture", class: 'label'
-            p.control
-              = f.file_field :picture 
-              = f.hidden_field :picture_cache
             p.control
               = f.submit "Update profile", class: 'button is-info expanded-button'
           p

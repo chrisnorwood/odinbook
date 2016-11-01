@@ -2,7 +2,7 @@
   article.media
     .figure.media-left
       p.image.is-64x64
-        = image_tag photo.user.picture.url(:medium)
+        = image_tag photo.user.profile_photo_path
     .media-content
       .content
         strong = link_to photo.user.name, photo.user
@@ -12,7 +12,14 @@
             figure.image
               = image_tag photo.file.url
           .card-content
-            .content = photo.description
+            .content 
+              span.is-pulled-left 
+                = photo.description
+              - if photo.user == current_user
+                br
+                = button_to(photo_set_profile_path(photo), class: 'button is-info is-small is-outlined')
+                  span.icon.is-small: i.fa.fa-camera
+                  span Make Profile Photo
         span.like-button
           = render partial: 'likes/like_button', locals: { object: photo }
         a.button.is-small.is-link.reply
@@ -25,7 +32,7 @@
       article.media.comment-form
         .figure.media-left
           p.image.is-32x32
-            = image_tag(current_user.picture.url(:small))
+            = image_tag(current_user.profile_photo_path)
         .media-content
           .content
             = form_for([photo, photo.comments.build], remote: true,

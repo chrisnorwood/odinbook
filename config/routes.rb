@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:create, :destroy] do
     resources :comments, only: :create
     resources :likes,    only: :create
+    post 'set_profile', to: 'users#set_profile_photo'
   end
 
   resources :comments, only: :destroy

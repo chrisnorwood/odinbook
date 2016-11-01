@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :posts,  dependent: :destroy
   has_many :photos, dependent: :destroy
 
+  belongs_to :profile_photo, class_name: 'Photo', foreign_key: 'profile_photo_id'
+
   has_many :requests, dependent: :destroy
   has_many :sent_requests,     class_name: 'Request', foreign_key: 'user_id', 
                                dependent: :destroy
@@ -26,11 +28,6 @@ class User < ApplicationRecord
   # split into like type??
   has_many :likes
 
-  mount_uploader :picture, PictureUploader
-
-  validates_integrity_of :picture
-  validates_processing_of :picture
-  validate :picture_size
   validates :name, presence: true, length: { maximum: 50 }
 
   def feed
@@ -50,6 +47,14 @@ class User < ApplicationRecord
     return combined
   end
 
+  def profile_photo_path
+    if profile_photo.nil?
+      'fallback/default.jpg'
+    else
+      profile_photo.file.url(:thumb)
+    end
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -58,10 +63,4 @@ class User < ApplicationRecord
       user.picture = auth.info.image
     end
   end
-
-  private
-
-    def picture_size
-      errors[:picture] << "should be less than 500KB" if picture.size > 0.5.megabytes
-    end
 end

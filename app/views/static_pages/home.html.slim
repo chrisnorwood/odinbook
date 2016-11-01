@@ -11,7 +11,7 @@ section.section
               article.media
                 .figure.media-left
                   p.image.is-32x32
-                    = image_tag request.user.picture.url(:small)
+                    = image_tag request.user.profile_photo_path
                 .media-content
                   = link_to request.user.name, request.user
                 .media-right
@@ -39,7 +39,7 @@ section.section
             article.media
               .figure.media-left
                 p.image.is-64x64
-                  = image_tag(current_user.picture.url(:medium))
+                  = image_tag(current_user.profile_photo_path)
               .media-content
                 = form_for(current_user.posts.build, remote: true) do |f|
                   p.control
@@ -54,7 +54,7 @@ section.section
             article.media
               .figure.media-left
                 p.image.is-64x64
-                  = image_tag(current_user.picture.url(:medium))
+                  = image_tag(current_user.profile_photo_path)
               .media-content
                 = form_for(current_user.photos.build, remote: true, html: { multipart: true }) do |f|
                   = hidden_field_tag :authenticity_token, form_authenticity_token
