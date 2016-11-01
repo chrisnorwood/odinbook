@@ -1,0 +1,4 @@
+var $feed = "#feed"
+var $newPhoto = "<%= escape_javascript render(partial: 'photo', locals: { photo: @photo }) %>"
+
+$($newPhoto).hide().prependTo($feed).slideDown();

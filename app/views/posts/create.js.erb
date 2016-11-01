@@ -1,4 +1,4 @@
-var $posts = "#posts"
+var $feed = "#feed"
 var $newPost = "<%= escape_javascript render(partial: 'post', locals: { post: @post }) %>"
 
-$($newPost).hide().prependTo($posts).slideDown();
+$($newPost).hide().prependTo($feed).slideDown();

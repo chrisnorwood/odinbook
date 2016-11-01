@@ -15,6 +15,12 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
   end
 
   private
