@@ -12,7 +12,8 @@ section.section
               article.media
                 .figure.media-left
                   p.image.is-32x32
-                    = image_tag(friend.profile_photo_path)
+                    = link_to friend do
+                      = image_tag(friend.profile_photo_path)
                 .media-content
                   h1.subtitle = link_to friend.name, friend
                   div class="request-buttons-#{friend.id}"

@@ -1,7 +1,8 @@
 article.media class="comment-#{comment.id}"
   .figure.media-left
     p.image.is-32x32
-      = image_tag(comment.user.profile_photo_path)
+      = link_to comment.user do
+        = image_tag(comment.user.profile_photo_path)
   .media-content
     .content
       p
