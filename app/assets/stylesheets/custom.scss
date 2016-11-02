@@ -26,6 +26,17 @@ body {
   }
 }
 
+// Pagination
+.pagination {
+  .previous_page, .next_page {
+    @extend .button;
+  }
+
+  .disabled {
+    @extend .is-disabled;
+  }
+}
+
 // Body
 
 section.section {

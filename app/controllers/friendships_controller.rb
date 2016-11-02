@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @friends = @user.friends
+    @friends = @user.friends.paginate(page: params[:page], per_page: 20)
   end
 
   def destroy
@@ -16,6 +16,7 @@ class FriendshipsController < ApplicationController
     @user           = current_user
     current_friends = @user.friends
     @new_friends    = User.all.reject { |friend| current_friends.include?(friend) || friend == @user }
+    @new_friends    = @new_friends.paginate(page: params[:page], per_page: 50)
   end
 
   private

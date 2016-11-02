@@ -10,6 +10,8 @@ section.section
           - @photos.each do |photo|
             .box
               = render photo
+          .pagination
+            = will_paginate @photos, page_links: false
         - else
           .box
             article.media

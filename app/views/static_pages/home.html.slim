@@ -74,3 +74,5 @@ section.section
           - @feed_items.each do |feed_item|
             - if feed_item.persisted?
               = render feed_item
+        .pagination
+            = will_paginate @feed_items, page_links: false

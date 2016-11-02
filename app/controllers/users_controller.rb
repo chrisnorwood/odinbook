@@ -1,9 +1,12 @@
+require 'will_paginate/array'
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: :set_profile_photo
 
   def show
     @user = User.find(params[:id])
+    @feed_items = @user.personal_feed.paginate(page: params[:page], per_page: 20)
   end
 
   def set_profile_photo

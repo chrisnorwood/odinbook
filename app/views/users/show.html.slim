@@ -6,11 +6,13 @@ section.section
       .column.is-7
         h1.title = "Timeline"
         .box#feed
-          - if @user.personal_feed.any?
-            - @user.personal_feed.each do |feed_item|
+          - if @feed_items.any?
+            - @feed_items.each do |feed_item|
               = render feed_item
           - else
             .box
               article.media
                 .media-content
                   p This user has no contributions to display.
+        .pagination
+          = will_paginate @feed_items, page_links: false
