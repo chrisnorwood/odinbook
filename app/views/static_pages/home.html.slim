@@ -69,7 +69,7 @@ section.section
                     .level-right
                       .level-item
                         = f.submit "Post", class: 'button is-info'
-        #feed
+        .box#feed
           - @feed_items.each do |feed_item|
             - if feed_item.persisted?
               = render feed_item

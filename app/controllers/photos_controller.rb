@@ -2,6 +2,11 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: :destroy
 
+  def index
+    @user = User.find(params[:user_id])
+    @photos = @user.photos
+  end
+
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save

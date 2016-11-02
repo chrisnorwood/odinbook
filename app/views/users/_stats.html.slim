@@ -2,7 +2,8 @@
   article.media
     .figure.media-left
       p.image.is-128x128
-        = image_tag user.profile_photo_path
+        = link_to user_photos_path(user) do
+          = image_tag user.profile_photo_path
     .media-content
       h1.subtitle = link_to user.name, user
       - unless user == current_user

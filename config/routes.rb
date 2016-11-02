@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :likes,    only: :destroy
 
   resources :users, only: [:show] do
+    resources :photos,   only: :index
     resources :requests, only: :create
     resources :friends,  only: :index, controller: 'friendships'
   end

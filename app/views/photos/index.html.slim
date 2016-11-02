@@ -1,0 +1,17 @@
+section.section
+  .container
+    .columns
+      .column.is-3.is-offset-1
+        = render partial: 'users/stats', locals: { user: @user }
+      .column.is-7
+        h1.title #{@user.name}'s photos:
+        .subtitle: em = link_to "(Return to profile)", @user
+        - if @photos.any?
+          - @photos.each do |photo|
+            .box
+              = render photo
+        - else
+          .box
+            article.media
+              .media-content
+                p This user has no photos.

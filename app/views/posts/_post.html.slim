@@ -1,37 +1,36 @@
-.box class="post-#{post.id}"
-  article.media
-    .figure.media-left
-      p.image.is-64x64
-        = link_to post.user do
-          = image_tag post.user.profile_photo_path
-    .media-content
-      .content
-        strong = link_to post.user.name, post.user
-        small<() (#{time_ago_in_words(post.created_at)} ago)
-        br
+article.media class="post-#{post.id}"
+  .figure.media-left
+    p.image.is-64x64
+      = link_to post.user do
+        = image_tag post.user.profile_photo_path
+  .media-content
+    .content
+      strong = link_to post.user.name, post.user
+      small<() (#{time_ago_in_words(post.created_at)} ago)
+      br
+      .post-body
         = post.body
-        br
-        span.like-button
-          = render partial: 'likes/like_button', locals: { object: post }
-        a.button.is-small.is-link.reply
-          span.icon.is-small: i.fa.fa-mail-reply
-          span Reply
-      .comments class="comments-post-#{post.id}"
-        - if post.comments.any?
-          - post.comments.each do |comment|
-            = render comment
-      article.media.comment-form
-        .figure.media-left
-          p.image.is-32x32
-            = image_tag(current_user.profile_photo_path)
-        .media-content
-          .content
-            = form_for([post, post.comments.build], remote: true,
-                                                    html: { class: "comment-form-post-#{post.id}" }) do |f|
-              p.control
-                = f.text_field :body, class: 'input is-expanded', required: true
-              p.control
-                = f.submit 'Comment', class: 'button is-info is-outlined is-pulled-right'
-    - if post.user == current_user
-      .media-right
-        = button_to(post, method: :delete, remote: true, class: 'button delete') {}
+      span.like-button
+        = render partial: 'likes/like_button', locals: { object: post }
+      a.button.is-small.is-link.reply
+        span.icon.is-small: i.fa.fa-mail-reply
+        span Reply
+    .comments class="comments-post-#{post.id}"
+      - if post.comments.any?
+        - post.comments.each do |comment|
+          = render comment
+    article.media.comment-form
+      .figure.media-left
+        p.image.is-32x32
+          = image_tag(current_user.profile_photo_path)
+      .media-content
+        .content
+          = form_for([post, post.comments.build], remote: true,
+                                                  html: { class: "comment-form-post-#{post.id}" }) do |f|
+            p.control
+              = f.text_field :body, class: 'input is-expanded', required: true
+            p.control
+              = f.submit 'Comment', class: 'button is-info is-outlined is-pulled-right'
+  - if post.user == current_user
+    .media-right
+      = button_to(post, method: :delete, remote: true, class: 'button delete') {}

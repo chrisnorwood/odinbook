@@ -2,8 +2,10 @@ class Photo < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes,    as: :likeable
-  
+
   mount_uploader :file, PhotoUploader
+
+  default_scope -> { order(created_at: :desc) }
 
   validates_integrity_of  :file
   validates_processing_of :file
