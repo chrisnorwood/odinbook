@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def index
-    @user = User.find(params[:user_id])
+    @user   = User.find(params[:user_id])
     @photos = @user.photos
   end
 

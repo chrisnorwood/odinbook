@@ -23,7 +23,7 @@
         .media-content
           = link_to friend.name, friend
     - if user.friends.count > 6
-      em.is-pulled-right: a = link_to "View all friends...", user_friends_path(user)
+      em.is-pulled-right: = link_to "View all friends...", user_friends_path(user), class: 'button'
       br
   - else
     p: em This user has no friends.
