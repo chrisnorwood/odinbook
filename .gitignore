@@ -25,3 +25,6 @@
 
 # Ignore tmp files for upload
 /public/uploads/tmp
+
+/.idea
+/.idea/
